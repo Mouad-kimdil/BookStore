@@ -1,0 +1,55 @@
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 80px 20px;
+    width: 100%;
+    text-align: center;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+.errorCode {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: clamp(6rem, 18vw, 14rem);
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 0.85;
+    margin: 0;
+    letter-spacing: -4px;
+}
+
+.errorMessage {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #9a9aa2;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    margin: 32px 0 40px 0;
+    max-width: 480px;
+}
+
+.errorActionBtn {
+    display: inline-block;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #f2f2f0;
+    background-color: #242429;
+    border: 1px solid #2a2a2f;
+    padding: 11px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.errorActionBtn:hover {
+    background-color: #3a3a41;
+    border-color: #3a3a41;
+    color: #ffffff;
+}

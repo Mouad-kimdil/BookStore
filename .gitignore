@@ -1,0 +1,94 @@
+# Project Files
+AGENTS.md
+TODO.md
+info.md
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+*.whl
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual Environment
+venv/
+env/
+.venv/
+.env/
+
+# Django
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+static_collected/
+*.log
+local_settings.py
+
+# Environment Variables
+.env
+.env.local
+.env.production
+
+# Node
+node_modules/
+.npm
+npm-debug.log*
+
+# React / Vite
+dist/
+dist-ssr/
+build/
+*.local
+
+# IDE
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Ruff
+.ruff_cache/
+
+# Type Checking
+.mypy_cache/
+.pytype/
+
+# Docker
+.docker/
+
+# Misc
+*.bak
+*.tmp
+*.temp

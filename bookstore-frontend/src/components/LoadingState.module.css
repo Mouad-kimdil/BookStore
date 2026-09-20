@@ -1,0 +1,36 @@
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    width: 100%;
+    text-align: center;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+.loadingSpinner {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #2a2a2f;
+    border-top-color: #f2f2f0;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loadingText {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #9a9aa2;
+    margin: 0;
+}

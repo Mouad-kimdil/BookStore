@@ -1,0 +1,113 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.headerSkeleton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.titleBlock {
+    height: 32px;
+    width: 220px;
+    background-color: #1e1e24;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.subtitleBlock {
+    height: 16px;
+    width: 340px;
+    background-color: #1e1e24;
+    border-radius: 4px;
+}
+
+.buttonBlock {
+    height: 40px;
+    width: 120px;
+    background-color: #1e1e24;
+    border-radius: 6px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    background-color: #1e1e24;
+    border: 1px solid #2d2d38;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 220px;
+}
+
+.cardTitle {
+    height: 24px;
+    width: 75%;
+    background-color: #2d2d38;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+.cardAuthor {
+    height: 16px;
+    width: 50%;
+    background-color: #2d2d38;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.cardIsbn {
+    height: 14px;
+    width: 40%;
+    background-color: #2d2d38;
+    border-radius: 4px;
+}
+
+.cardFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #2d2d38;
+    padding-top: 16px;
+    margin-top: 16px;
+}
+
+.cardPrice {
+    height: 20px;
+    width: 30%;
+    background-color: #2d2d38;
+    border-radius: 4px;
+}
+
+.cardBtn {
+    height: 20px;
+    width: 35%;
+    background-color: #2d2d38;
+    border-radius: 4px;
+}
+
+.pulse {
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
