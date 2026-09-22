@@ -5,6 +5,7 @@ import BookDetail from "./components/BookDetail"
 import CreateBook from "./components/CreateBook"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
+import Landing from "./components/Landing"
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
 
                 <main className="main">
                     <Routes>
-                        <Route path="/" element={<Navigate to="/books" replace />} />
+                        <Route path="/" element={<Landing />} />
                         <Route path="/books" element={<BookList />} />
                         <Route path="/books/:id" element={<BookDetail />} />
                         <Route path="/create" element={<CreateBook />} />

@@ -24,7 +24,7 @@ function BookList() {
             .catch(err => {
                 setError({
                     code: "503",
-                    message: "Unable to connect to server. Please check your backend connection."
+                    message: "Unable to connect to server. Please check your connection."
                 })
                 setLoading(false)
             })
@@ -72,38 +72,24 @@ function BookList() {
             ) : (
                 <div className={styles.bookGrid}>
                     {books.map(book => (
-                        <div key={book.id} className={styles.bookCard}>
-                            <div className={styles.topSection}>
-                                <h2 className={styles.bookTitle}>{book.title}</h2>
-                                <p className={styles.bookAuthor}>by {book.author_name || 'Unknown Author'}</p>
-
-                                {book.categories && book.categories.length > 0 && (
-                                    <div className={styles.chipRow}>
-                                        {book.categories.map((c, i) => (
-                                            <span key={c.id || i} className={styles.chip}>
-                                                {c.name || c}
-                                            </span>
-                                        ))}
-                                    </div>
-                                )}
+                        <Link key={book.id} to={`/books/${book.id}`} className={styles.bookCard}>
+                            <h2 className={styles.bookTitle}>{book.title}</h2>
+                            <div className={styles.coverWrapper}>
+                                <img
+                                    src={`https://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg`}
+                                    alt={book.title}
+                                    className={styles.bookCover}
+                                />
                             </div>
-
-                            <div className={styles.bottomSection}>
-                                <div className={styles.priceStockGroup}>
-                                    <span className={styles.bookPrice}>
-                                        ${parseFloat(book.price).toFixed(2)}
-                                    </span>
-                                    <span className={styles.dot}>·</span>
-                                    <span className={book.stock > 0 ? styles.inStockText : styles.outOfStockText}>
-                                        {book.stock > 0 ? `${book.stock} in stock` : 'Out of stock'}
-                                    </span>
-                                </div>
-
-                                <Link className={styles.viewDetailsBtn} to={`/books/${book.id}`}>
-                                    View Details &rarr;
-                                </Link>
+                            <p className={styles.bookAuthor}>{book.author_name || 'Unknown Author'}</p>
+                            <div className={styles.cardBottom}>
+                                <span className={styles.bookPrice}>${parseFloat(book.price).toFixed(2)}</span>
+                                <span className={book.stock > 0 ? styles.inStockText : styles.outOfStockText}>
+                                    {book.stock > 0 ? `${book.stock} in stock` : 'Out of stock'}
+                                </span>
                             </div>
-                        </div>
+                            <span className={styles.bookDetails}>Details &rarr;</span>
+                        </Link>
                     ))}
                 </div>
             )}

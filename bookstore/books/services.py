@@ -19,6 +19,10 @@ def get_book_with_filters(query_params):
     if category:
         books = books.filter(categories__id=category)
 
+    limit = query_params.get('limit')
+    if (limit):
+        books = books[:int(limit)]
+
     serializer = BookSerializer(books, many=True)
     return serializer.data
 

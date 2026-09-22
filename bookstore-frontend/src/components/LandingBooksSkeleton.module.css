@@ -1,52 +1,31 @@
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
+.skeleton {
+    padding: 0 24px;
 }
 
-.headerSkeleton {
+.heading {
+    height: 28px;
+    width: 160px;
+    background-color: #1e1e24;
+    border-radius: 4px;
+    margin-bottom: 24px;
+}
+
+.scrollRow {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 32px;
-}
-
-.titleBlock {
-    height: 32px;
-    width: 220px;
-    background-color: #1e1e24;
-    border-radius: 4px;
-    margin-bottom: 8px;
-}
-
-.subtitleBlock {
-    height: 16px;
-    width: 340px;
-    background-color: #1e1e24;
-    border-radius: 4px;
-}
-
-.buttonBlock {
-    height: 40px;
-    width: 120px;
-    background-color: #1e1e24;
-    border-radius: 6px;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 16px;
+    overflow: hidden;
 }
 
 .card {
-    background: #131316;
+    min-width: 200px;
+    width: 200px;
+    background-color: #131316;
     border: 1px solid #2a2a2f;
     border-radius: 12px;
     padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .cardTitle {
@@ -70,22 +49,9 @@
     border-radius: 4px;
 }
 
-.cardBottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .cardPrice {
     height: 16px;
     width: 40%;
-    background-color: #2a2a2f;
-    border-radius: 4px;
-}
-
-.cardStock {
-    height: 14px;
-    width: 30%;
     background-color: #2a2a2f;
     border-radius: 4px;
 }
