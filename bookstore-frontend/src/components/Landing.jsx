@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import styles from './Landing.module.css'
 import LandingBooksSkeleton from './LandingBooksSkeleton'
 import ErrorState from './ErrorState';
+import { API_URL } from '../api.js';
 
 function Landing() {
     const [books, setBooks] = useState([])
@@ -11,7 +12,7 @@ function Landing() {
     const scrollRef = useRef(null)
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/api/books/?limit=10`)
+        fetch(`${API_URL}/api/books/?limit=10`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Server returned status ${response.status}`)

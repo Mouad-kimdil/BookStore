@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import ErrorState from './ErrorState'
 import LoadingState from './LoadingState'
 import styles from './BookDetail.module.css'
+import { API_URL } from '../api.js'
 
 const ERROR_MESSAGES = {
     400: "Invalid request",
@@ -18,7 +19,7 @@ function BookDetail() {
     const [error, setError] = useState(null)
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/api/books/${id}/`)
+        fetch(`${API_URL}/api/books/${id}/`)
             .then(response => {
                 if (!response.ok) {
                     const statusCode = response.status

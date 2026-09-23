@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom"
 import LoadingState from './LoadingState'
 import ErrorState from './ErrorState'
 import styles from './CreateBook.module.css'
+import { API_URL } from '../api.js'
 
 function CreateBook() {
     const [formData, setformData] = useState({
@@ -21,7 +22,7 @@ function CreateBook() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/authors/')
+        fetch(`${API_URL}/api/authors/`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Unable to fetch authors list.");
@@ -58,7 +59,7 @@ function CreateBook() {
                 .filter(item => !isNaN(item))
         }
 
-        fetch('http://127.0.0.1:8000/api/books/', {
+        fetch(`${API_URL}/api/books/`, {
             method: 'POST',
             headers: {
                 'Content-Type' : 'application/json'

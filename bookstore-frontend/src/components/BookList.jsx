@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import BookListSkeleton from './BookListSkeleton'
 import ErrorState from './ErrorState'
 import styles from './BookList.module.css'
+import { API_URL } from '../api.js'
 
 function BookList() {
     const [books, setBooks] = useState([])
@@ -10,7 +11,7 @@ function BookList() {
     const [error, setError] = useState(null)
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/books/')
+        fetch(`${API_URL}/api/books/`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Server returned status ${response.status}`)
