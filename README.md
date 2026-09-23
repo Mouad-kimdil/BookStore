@@ -29,5 +29,3 @@ Backend reads configuration from environment via a git-ignored `.env` file (`dja
    python bookstore/manage.py check
    python bookstore/manage.py runserver
    ```
-
-`.env` is git-ignored (`chmod 600`). Commit `.env.example` only, never `.env`.
