@@ -12,7 +12,7 @@ Backend reads configuration from environment via a git-ignored `.env` file (`dja
    cp .env.example .env
    ```
 
-2. Generate a new `SECRET_KEY` (do not reuse old values):
+2. Generate a new `SECRET_KEY`:
 
    ```bash
    python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
