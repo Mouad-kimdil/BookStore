@@ -3,10 +3,12 @@ AGENTS.md
 CLAUDE.md
 TODO.md
 info.md
+project-context.md
 
 # Python
 __pycache__/
 *.py[cod]
+*.pyc
 *$py.class
 *.so
 *.egg
@@ -35,6 +37,8 @@ local_settings.py
 
 # Environment Variables
 .env
+.env.*
+!.env.example
 .env.local
 .env.production
 

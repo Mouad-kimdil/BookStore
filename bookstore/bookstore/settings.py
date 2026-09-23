@@ -12,21 +12,37 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+env = environ.Env(
+    DEBUG=(bool, False),
+)
+
+# Load .env from repo root (parent of BASE_DIR) and from BASE_DIR itself.
+# Missing files are ignored so production can use real environment variables.
+_ENV_ROOT = BASE_DIR.parent / '.env'
+_ENV_BASE = BASE_DIR / '.env'
+if _ENV_ROOT.exists():
+    environ.Env.read_env(_ENV_ROOT, overwrite=False)
+if _ENV_BASE.exists():
+    environ.Env.read_env(_ENV_BASE, overwrite=False)
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '***REMOVED***'
+# No default — must be set via environment (.env). Rotating it invalidates
+# simplejwt tokens signed with SECRET_KEY (expected).
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
 
 # Application definition
@@ -80,11 +96,11 @@ WSGI_APPLICATION = 'bookstore.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bookstore_db',
-        'USER': 'bookstore_user',
-        'PASSWORD': '***REMOVED***',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST', default='localhost'),
+        'PORT': env('DB_PORT', default='5432'),
     }
 }
 
@@ -152,6 +168,7 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1)
 }
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-]
+CORS_ALLOWED_ORIGINS = env.list(
+    'CORS_ALLOWED_ORIGINS',
+    default=["http://localhost:5173"],
+)
