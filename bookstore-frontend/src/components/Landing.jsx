@@ -43,6 +43,21 @@ function Landing() {
         }
     }
 
+    if (loading) {
+        return (<LandingBooksSkeleton />)
+    }
+
+    if (error) {
+        return (
+            <ErrorState
+                code={error.code}
+                message={error.message}
+                onRetry={() => window.location.reload()}
+                actionText="RETRY"
+            />
+        )
+    }
+
     const coverUrl = (isbn) => `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`
 
     return (
@@ -59,45 +74,34 @@ function Landing() {
             <section className={styles.booksSection}>
                 <h2 className={styles.sectionHeading}>Books</h2>
 
-                {loading ? (
-                    <LandingBooksSkeleton />
-                ) : error ? (
-                    <ErrorState
-                        code={error.code}
-                        message={error.message}
-                        onRetry={() => window.location.reload()}
-                        actionText="RETRY"
-                    />
-                ) : (
-                    <div className={styles.scrollWrapper}>
-                        <button className={styles.scrollArrow} onClick={scrollLeft} aria-label="Scroll left">
-                            &larr;
-                        </button>
+                <div className={styles.scrollWrapper}>
+                    <button className={styles.scrollArrow} onClick={scrollLeft} aria-label="Scroll left">
+                        &larr;
+                    </button>
 
 
-                        <div className={styles.scrollContainer} ref={scrollRef}>
-                            {books.map(book => (
-                                <Link to={`/books/${book.id}`} key={book.id} className={styles.bookCard}>
-                                    <h3 className={styles.bookTitle}>{book.title}</h3>
-                                    <div className={styles.coverWrapper}>
-                                        <img
-                                            src={coverUrl(book.isbn)}
-                                            alt={book.title}
-                                            className={styles.bookCover}
-                                        />
-                                    </div>
-                                    <p className={styles.bookAuthor}>{book.author_name || 'Unknown Author'}</p>
-                                    <p className={styles.bookPrice}>${parseFloat(book.price).toFixed(2)}</p>
-                                    <span className={styles.bookDetails}>Details &rarr;</span>
-                                </Link>
-                            ))}
-                        </div>
-
-                        <button className={styles.scrollArrow} onClick={scrollRight} aria-label="Scroll right">
-                            &rarr;
-                        </button>
+                    <div className={styles.scrollContainer} ref={scrollRef}>
+                        {books.map(book => (
+                            <Link to={`/books/${book.id}`} key={book.id} className={styles.bookCard}>
+                                <h3 className={styles.bookTitle}>{book.title}</h3>
+                                <div className={styles.coverWrapper}>
+                                    <img
+                                        src={coverUrl(book.isbn)}
+                                        alt={book.title}
+                                        className={styles.bookCover}
+                                    />
+                                </div>
+                                <p className={styles.bookAuthor}>{book.author_name || 'Unknown Author'}</p>
+                                <p className={styles.bookPrice}>${parseFloat(book.price).toFixed(2)}</p>
+                                <span className={styles.bookDetails}>Details &rarr;</span>
+                            </Link>
+                        ))}
                     </div>
-                )}
+
+                    <button className={styles.scrollArrow} onClick={scrollRight} aria-label="Scroll right">
+                        &rarr;
+                    </button>
+                </div>
 
                 {!loading && !error && (
                     <div className={styles.seeMoreWrapper}>
